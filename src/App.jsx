@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Header = ({ setCurrentPage }) => {
+const Header = ({ setCurrentPage, toggleTheme, theme }) => {
     return (
         <header className="header">
             <div className="header-left">
@@ -16,6 +16,22 @@ const Header = ({ setCurrentPage }) => {
                 <a href="#" className="contact-button" onClick={() => setCurrentPage('contact')}>
                     Contact Us
                 </a>
+                <button
+                    onClick={toggleTheme}
+                    className="theme-toggle-button"
+                    aria-label="Toggle theme"
+                >
+                    {theme === 'gold' ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="5"/>
+                          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    )}
+                </button>
             </div>
         </header>
     );
@@ -37,23 +53,26 @@ const Footer = () => {
     );
 };
 
-const Home = ({ setCurrentPage }) => {
+const Home = ({ setCurrentPage, theme }) => {
+    const titleGradient = theme === 'gold' ? 'linear-gradient(45deg, #facc15, #b45f06)' : 'linear-gradient(45deg, #ef4444, #7f1d1d)';
+    const exploreButtonColor = theme === 'gold' ? '#facc15' : '#ef4444';
+
     return (
         <div className="main-content home-content">
-            <h2 className="title-text animate-fade-in-up">
+            <h2 className="title-text animate-fade-in-up" style={{ backgroundImage: titleGradient }}>
                 EQUINOX
             </h2>
-            <p className="subtitle-text animate-fade-in-up delay-200">
+            <p className="subtitle-text animate-fade-in-up delay-200" style={{ color: exploreButtonColor }}>
                 2025
             </p>
-            <a href="#" className="explore-button animate-fade-in-up delay-400" onClick={() => setCurrentPage('events')}>
+            <a href="#" className="explore-button animate-fade-in-up delay-400" onClick={() => setCurrentPage('events')} style={{ borderColor: exploreButtonColor, color: exploreButtonColor }}>
                 Explore
             </a>
         </div>
     );
 };
 
-const Events = ({ showMessage }) => {
+const Events = ({ showMessage, setCurrentPage, theme }) => {
     const eventsData = [
         {
             title: "Event A: 1",
@@ -87,6 +106,9 @@ const Events = ({ showMessage }) => {
         }
     ];
 
+    const viewMoreButtonColor = theme === 'gold' ? '#facc15' : '#ef4444';
+    const eventTitleColor = theme === 'gold' ? '#facc15' : '#ef4444';
+
     return (
         <>
             <div className="main-content">
@@ -100,12 +122,13 @@ const Events = ({ showMessage }) => {
                         <div key={index} className="event-card">
                             <img src={event.image} alt={event.title} className="event-image" />
                             <div className="event-info">
-                                <h3 className="event-title">{event.title}</h3>
+                                <h3 className="event-title" style={{ color: eventTitleColor }}>{event.title}</h3>
                                 <p className="event-date">{event.date}</p>
                                 <p className="event-description">{event.description}</p>
                                 <button
                                     className="view-more-button"
                                     onClick={() => showMessage(`Viewing more details for: ${event.title}!`)}
+                                    style={{ borderColor: viewMoreButtonColor, color: viewMoreButtonColor }}
                                 >
                                     View More
                                 </button>
@@ -118,7 +141,7 @@ const Events = ({ showMessage }) => {
                 <button
                     id="registerButton"
                     className="register-button"
-                    onClick={() => showMessage('You have successfully registered for all upcoming events!')}
+                    onClick={() => setCurrentPage('registration')}
                 >
                     Register Now
                 </button>
@@ -239,10 +262,52 @@ const Contact = () => {
     );
 };
 
+const Registration = ({ showMessage, setCurrentPage, theme }) => {
+    const handleRegister = (type) => {
+        showMessage(`You chose to register as a/an ${type}.`);
+        setCurrentPage('events'); // Return to events page after a selection is made
+    };
+    
+    const institutionButtonBg = theme === 'gold' ? '#facc15' : '#ef4444';
+    const institutionButtonHoverBg = theme === 'gold' ? '#eab308' : '#dc2626';
+
+    const individualButtonBg = theme === 'gold' ? 'white' : '#e5e7eb';
+    const individualButtonHoverBg = theme === 'gold' ? '#e5e7eb' : '#d1d5db';
+    const individualButtonText = theme === 'gold' ? 'black' : 'black';
+
+    return (
+        <div className="main-content registration-content">
+            <h2 className="title-text">Register</h2>
+            <p className="description-text">Are you registering on behalf of an institution or as an individual?</p>
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8 w-full max-w-sm">
+                <button
+                    className="w-full text-black font-bold py-3 rounded-full transition-colors"
+                    style={{ backgroundColor: institutionButtonBg, '--hover-bg': institutionButtonHoverBg }}
+                    onClick={() => handleRegister('Institution')}
+                >
+                    Institution
+                </button>
+                <button
+                    className="w-full text-black font-bold py-3 rounded-full transition-colors"
+                    style={{ backgroundColor: individualButtonBg, color: individualButtonText, '--hover-bg': individualButtonHoverBg }}
+                    onClick={() => handleRegister('Individual')}
+                >
+                    Individual
+                </button>
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [currentPage, setCurrentPage] = useState('home');
+    const [theme, setTheme] = useState('gold');
     const [message, setMessage] = useState('');
     const [isMessageVisible, setIsMessageVisible] = useState(false);
+
+    const toggleTheme = () => {
+        setTheme(prevTheme => prevTheme === 'gold' ? 'red' : 'gold');
+    };
 
     const showMessage = (msg) => {
         setMessage(msg);
@@ -255,9 +320,11 @@ const App = () => {
     const renderContent = () => {
         switch (currentPage) {
             case 'home':
-                return <Home setCurrentPage={setCurrentPage} />;
+                return <Home setCurrentPage={setCurrentPage} theme={theme} />;
             case 'events':
-                return <Events showMessage={showMessage} />;
+                return <Events showMessage={showMessage} setCurrentPage={setCurrentPage} theme={theme} />;
+            case 'registration':
+                return <Registration showMessage={showMessage} setCurrentPage={setCurrentPage} theme={theme} />;
             case 'about':
                 return <About />;
             case 'help':
@@ -279,16 +346,115 @@ const App = () => {
                         margin: 0;
                         padding: 0;
                         min-height: 100vh;
+                        background-color: #000;
                     }
 
                     .app-container {
                         position: relative;
                         min-height: 100vh;
-                        background-color: #000;
                         color: #fff;
                         font-family: 'Inter', sans-serif;
+                        background-color: #000;
+                    }
+                    
+                    /* Theme-specific styles using a CSS variable for the active color */
+                    .theme-red .logo-text,
+                    .theme-red .title-text,
+                    .theme-red .explore-button,
+                    .theme-red .contact-button,
+                    .theme-red .view-more-button,
+                    .theme-red .register-button {
+                        background: linear-gradient(45deg, #ef4444, #7f1d1d);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        border-color: #ef4444;
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .explore-button,
+                    .theme-red .contact-button,
+                    .theme-red .view-more-button,
+                    .theme-red .register-button {
+                        -webkit-text-fill-color: initial;
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .explore-button:hover,
+                    .theme-red .contact-button:hover,
+                    .theme-red .view-more-button:hover {
+                        background-color: #ef4444;
+                        color: #000;
                     }
 
+                    .theme-red .register-button {
+                        background-color: #ef4444;
+                        color: #000;
+                    }
+
+                    .theme-red .register-button:hover {
+                        background-color: #dc2626;
+                    }
+                    
+                    .theme-red .view-more-button {
+                        box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+                    }
+                    .theme-red .view-more-button:hover {
+                        box-shadow: 0 5px 15px rgba(239, 68, 68, 0.5);
+                    }
+                    .theme-red .register-button {
+                        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+                    }
+                    .theme-red .register-button:hover {
+                        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+                    }
+                    .theme-red .contact-button:hover {
+                        box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+                    }
+
+                    .theme-red .subtitle-text,
+                    .theme-red .event-title,
+                    .theme-red .social-icon,
+                    .theme-red .background-light {
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .background-light {
+                        background-color: #ef4444;
+                    }
+                    
+                    .theme-toggle-button {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        color: #facc15;
+                        transition: color 0.3s ease;
+                        margin-left: 1rem;
+                    }
+
+                    .theme-toggle-button:hover {
+                        color: white;
+                    }
+
+                    .message-box {
+                        position: fixed;
+                        top: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 12px 24px;
+                        border-radius: 9999px;
+                        background-color: #333;
+                        color: white;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        z-index: 1000;
+                        opacity: 0;
+                        transition: opacity 0.3s ease-in-out;
+                        pointer-events: none;
+                    }
+                    .message-box.show {
+                        opacity: 1;
+                    }
+                    
                     .main-wrapper {
                         position: relative;
                         z-index: 10;
@@ -304,32 +470,13 @@ const App = () => {
                         justify-content: space-between;
                         align-items: center;
                         padding: 1rem 0;
+                        animation: slide-down 0.5s ease-out forwards;
                     }
 
                     .header-left {
                         display: flex;
                         align-items: center;
                         gap: 2rem;
-                    }
-
-                    .college-info {
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
-                        margin-bottom: 0.5rem;
-                    }
-
-                    .college-logo {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 9999px;
-                        object-fit: cover;
-                    }
-
-                    .college-text {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
                     }
 
                     .logo-text {
@@ -340,12 +487,6 @@ const App = () => {
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         line-height: 1.2;
-                    }
-
-                    .college-address {
-                        font-size: 0.75rem;
-                        color: #9ca3af;
-                        margin-top: 0;
                     }
 
                     .nav-menu {
@@ -378,6 +519,14 @@ const App = () => {
                     .contact-button:hover {
                         background-color: #facc15;
                         color: #000;
+                        box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+                        animation: button-pulse 1s infinite;
+                    }
+                    
+                    @keyframes button-pulse {
+                      0% { box-shadow: 0 0 10px rgba(250, 204, 21, 0.6); }
+                      50% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.8); }
+                      100% { box-shadow: 0 0 10px rgba(250, 204, 21, 0.6); }
                     }
 
                     .main-content {
@@ -387,6 +536,7 @@ const App = () => {
                         justify-content: center;
                         text-align: center;
                         padding: 3rem 0;
+                        animation: fade-in 1s ease-out forwards;
                     }
                     
                     /* Specific styles for the events page */
@@ -404,12 +554,13 @@ const App = () => {
                         border-radius: 1rem;
                         overflow: hidden;
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
                     }
 
                     .event-card:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                        transform: translateY(-5px) scale(1.02);
+                        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                        background-color: #1f2937;
                     }
 
                     .event-image {
@@ -452,11 +603,14 @@ const App = () => {
                         cursor: pointer;
                         transition: all 0.3s ease;
                         margin-top: 1rem;
+                        box-shadow: 0 2px 5px rgba(250, 204, 21, 0.3);
                     }
 
                     .view-more-button:hover {
                         background-color: #facc15;
                         color: #000;
+                        transform: scale(1.05);
+                        box-shadow: 0 5px 15px rgba(250, 204, 21, 0.5);
                     }
                     
                     .sticky-bar {
@@ -471,6 +625,7 @@ const App = () => {
                         justify-content: center;
                         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
                         z-index: 100;
+                        animation: slide-up 0.5s ease-out forwards;
                     }
 
                     .register-button {
@@ -481,18 +636,27 @@ const App = () => {
                         border: none;
                         border-radius: 9999px;
                         cursor: pointer;
-                        transition: background-color 0.3s ease;
+                        transition: all 0.3s ease;
                         width: 100%;
                         max-width: 400px;
+                        box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+                        animation: button-shimmer 2s infinite linear;
+                    }
+                    
+                    @keyframes button-shimmer {
+                        0% { background-position: -200% 0; }
+                        100% { background-position: 200% 0; }
                     }
 
                     .register-button:hover {
                         background-color: #eab308;
+                        transform: scale(1.02);
+                        box-shadow: 0 6px 20px rgba(250, 204, 21, 0.6);
                     }
 
                     /* End of specific events styles */
 
-                    .home-content, .about-content, .help-content, .contact-content {
+                    .home-content, .about-content, .help-content, .contact-content, .registration-content {
                         min-height: 80vh;
                     }
 
@@ -548,11 +712,14 @@ const App = () => {
                         text-decoration: none;
                         border-radius: 9999px;
                         transition: all 0.3s ease;
+                        box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
                     }
 
                     .explore-button:hover {
                         background-color: #facc15;
                         color: #000;
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
                     }
 
                     .description-text {
@@ -599,6 +766,7 @@ const App = () => {
                         background: none;
                         cursor: pointer;
                         transition: all 0.3s ease;
+                        box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
                     }
 
                     .query-button:disabled {
@@ -609,6 +777,8 @@ const App = () => {
                     .query-button:hover:not(:disabled) {
                         background-color: #facc15;
                         color: #000;
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
                     }
 
                     .answer-box {
@@ -628,6 +798,7 @@ const App = () => {
                         align-items: center;
                         padding: 1rem 0;
                         width: 100%;
+                        animation: slide-up 0.5s ease-out forwards;
                     }
 
                     .footer-left {
@@ -731,6 +902,99 @@ const App = () => {
                             opacity: .5;
                         }
                     }
+                    
+                    @keyframes slide-down {
+                        from { transform: translateY(-100%); opacity: 0; }
+                        to { transform: translateY(0); opacity: 1; }
+                    }
+
+                    @keyframes slide-up {
+                        from { transform: translateY(100%); opacity: 0; }
+                        to { transform: translateY(0); opacity: 1; }
+                    }
+
+                    @keyframes fade-in {
+                      from { opacity: 0; }
+                      to { opacity: 1; }
+                    }
+                    
+                    /* Theme-specific styles using a CSS variable for the active color */
+                    .theme-red .logo-text,
+                    .theme-red .title-text,
+                    .theme-red .explore-button,
+                    .theme-red .contact-button,
+                    .theme-red .view-more-button,
+                    .theme-red .register-button {
+                        background: linear-gradient(45deg, #ef4444, #7f1d1d);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        border-color: #ef4444;
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .explore-button,
+                    .theme-red .contact-button,
+                    .theme-red .view-more-button,
+                    .theme-red .register-button {
+                        -webkit-text-fill-color: initial;
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .explore-button:hover,
+                    .theme-red .contact-button:hover,
+                    .theme-red .view-more-button:hover {
+                        background-color: #ef4444;
+                        color: #000;
+                    }
+
+                    .theme-red .register-button {
+                        background-color: #ef4444;
+                        color: #000;
+                    }
+
+                    .theme-red .register-button:hover {
+                        background-color: #dc2626;
+                    }
+                    
+                    .theme-red .view-more-button {
+                        box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+                    }
+                    .theme-red .view-more-button:hover {
+                        box-shadow: 0 5px 15px rgba(239, 68, 68, 0.5);
+                    }
+                    .theme-red .register-button {
+                        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+                    }
+                    .theme-red .register-button:hover {
+                        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+                    }
+                    .theme-red .contact-button:hover {
+                        box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+                    }
+
+                    .theme-red .subtitle-text,
+                    .theme-red .event-title,
+                    .theme-red .social-icon,
+                    .theme-red .background-light {
+                        color: #ef4444;
+                    }
+                    
+                    .theme-red .background-light {
+                        background-color: #ef4444;
+                    }
+                    
+                    .theme-toggle-button {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        color: #facc15;
+                        transition: color 0.3s ease;
+                        margin-left: 1rem;
+                    }
+
+                    .theme-toggle-button:hover {
+                        color: white;
+                    }
 
                     .message-box {
                         position: fixed;
@@ -753,12 +1017,12 @@ const App = () => {
                     }
                 `}
             </style>
-            <div className="app-container">
+            <div className={`app-container theme-${theme}`}>
                 <div className={`message-box ${isMessageVisible ? 'show' : ''}`} id="messageBox">
                     {message}
                 </div>
                 <main className="main-wrapper">
-                    <Header setCurrentPage={setCurrentPage} />
+                    <Header setCurrentPage={setCurrentPage} toggleTheme={toggleTheme} theme={theme} />
                     {renderContent()}
                     {currentPage === 'home' && <Footer />}
                 </main>
