@@ -1,0 +1,75 @@
+/* Registration.css */
+
+/* Main container */
+.registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Title and description */
+.title-text {
+    font-size: 10rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.description-text {
+    font-size: 1rem;
+    text-align: center;
+    color: #4b5563; /* gray-700 equivalent */
+    max-width: 600px;
+}
+
+/* Button container */
+.registration-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 512px; /* max-w-lg */
+}
+
+@media (min-width: 640px) {
+    /* Side by side on small screens and up */
+    .registration-buttons {
+        flex-direction: row;
+    }
+}
+
+/* Buttons */
+.register-button {
+    flex: 1;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.25rem; /* text-xl */
+    padding: 1.25rem 2rem; /* py-5 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    border: 2px solid transparent;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Individual button theme */
+.register-button.individual {
+    background-color: white;
+    color: black;
+}
+
+.register-button.individual:hover {
+    background-color: #e5e7eb; /* gray-200 */
+}
+
+/* Institution button theme */
+.register-button.institution {
+    background-color: #facc15; /* gold */
+    color: black;
+}
+
+.register-button.institution:hover {
+    background-color: #eab308; /* darker gold */
+}
