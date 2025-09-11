@@ -1,0 +1,71 @@
+.theme-gold .nav-link:hover, .theme-gold .social-icon:hover {
+    color: #facc15;
+}
+
+.theme-red .nav-link:hover, .theme-red .social-icon:hover {
+    color: #ef4444;
+}
+
+.theme-red .logo-text {
+    background: linear-gradient(45deg, #ef4444, #7f1d1d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.theme-red .title-text {
+    color: #ef4444; /* Solid color for transparency */
+}
+
+.theme-red .explore-button,
+.theme-red .contact-button,
+.theme-red .view-more-button {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.theme-red .explore-button:hover,
+.theme-red .contact-button:hover,
+.theme-red .view-more-button:hover {
+    background-color: #ef4444;
+    color: #000;
+}
+
+.theme-red .register-button {
+    background-color: #ef4444;
+    color: #000;
+}
+
+.theme-red .register-button:hover {
+    background-color: #dc2626;
+}
+
+.theme-red .view-more-button {
+    box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+}
+
+.theme-red .view-more-button:hover {
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.5);
+}
+
+.theme-red .register-button {
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.theme-red .register-button:hover {
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+}
+
+.theme-red .contact-button:hover {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+.theme-red .subtitle-text,
+.theme-red .event-title,
+.theme-red .social-icon,
+.theme-red .background-light {
+    color: #ef4444;
+}
+
+.theme-red .background-light {
+    background-color: #ef4444;
+}
