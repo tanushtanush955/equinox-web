@@ -1,3 +1,5 @@
+import "../Styles/Home.css";
+
 const Home = ({ setCurrentPage, theme }) => {
     const titleGradient = theme === 'gold' ? 'linear-gradient(45deg, #facc15, #b45f06)' : 'linear-gradient(45deg, #ef4444, #7f1d1d)';
     const exploreButtonColor = theme === 'gold' ? '#facc15' : '#ef4444';

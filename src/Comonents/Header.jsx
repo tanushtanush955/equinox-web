@@ -1,3 +1,5 @@
+import "../Styles/Header.css";
+
 const Header = ({ setCurrentPage, toggleTheme, theme }) => {
     return (
         <header className="header">

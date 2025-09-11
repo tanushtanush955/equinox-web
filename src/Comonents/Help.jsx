@@ -1,3 +1,5 @@
+import "../Styles/Help.css";
+
 const Help = () => {
     const [query, setQuery] = useState('');
     const [answer, setAnswer] = useState('');

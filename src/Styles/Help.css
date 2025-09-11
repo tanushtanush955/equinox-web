@@ -1,0 +1,38 @@
+.help-content {
+    /* No unique styles in provided index.css */
+}
+
+.query-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    /* Add more styles from truncated part */
+}
+
+.query-input {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #1f2937;
+    color: #fff;
+    border: none;
+    /* Add more styles from truncated part */
+}
+
+.query-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #facc15;
+    color: #000;
+    border-radius: 9999px;
+    /* Add more styles from truncated part */
+}
+
+.answer-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #111827;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: left;
+    color: #e5e7eb;
+}

@@ -1,3 +1,4 @@
+import "../Styles/EventItem.css";
 // Renders a single event card
 const EventItem = ({ event, showMessage, theme }) => {
   const viewMoreButtonColor = theme === "gold" ? "#facc15" : "#ef4444";

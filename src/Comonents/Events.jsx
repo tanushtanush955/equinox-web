@@ -1,3 +1,5 @@
+import "../Styles/Events.css";
+
 import EventList from "./EventList";
 
 const Events = ({ showMessage, setCurrentPage, theme }) => {
@@ -8,6 +10,78 @@ const Events = ({ showMessage, setCurrentPage, theme }) => {
       date: "Jan 1, 2025",
       description: "This is just a sample event.",
       image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+1",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
+    },
+    {
+      title: "Sample Event 2",
+      date: "Feb 15, 2025",
+      description: "Another temporary event description.",
+      image: "https://placehold.co/600x400/1e293b/94a3b8?text=Sample+2",
     },
     {
       title: "Sample Event 2",

@@ -1,3 +1,5 @@
+import "../Styles/Contact.css";
+
 const Contact = () => {
     return (
         <div className="main-content contact-content">

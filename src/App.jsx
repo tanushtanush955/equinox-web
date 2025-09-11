@@ -8,6 +8,8 @@ import Help from './Comonents/Help';
 import Contact from './Comonents/Contact';
 import Registration from './Comonents/Registration';
 
+import "./Styles/Global.css";
+import "./Styles/Themes.css";
 
 
 const App = () => {

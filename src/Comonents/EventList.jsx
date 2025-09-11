@@ -1,4 +1,5 @@
 import EventItem from "./EventItem";
+import "../Styles/EventList.css";
 
 const EventList = ({ events, showMessage, theme }) => {
   return (

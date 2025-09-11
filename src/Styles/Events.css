@@ -1,0 +1,27 @@
+.sticky-bar {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #000;
+    text-align: center;
+}
+
+.description-text {
+    font-size: 1.25rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    max-width: 40rem;
+}
+
+/* .register-button styles are in Themes.css for theme-specific overrides */
+.register-button {
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #facc15;
+    color: #000;
+}
