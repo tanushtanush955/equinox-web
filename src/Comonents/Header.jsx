@@ -9,6 +9,7 @@ const Header = ({ setCurrentPage, toggleTheme, theme }) => {
                     <a href="#" className="nav-link" onClick={() => setCurrentPage('home')}>Home</a>
                     <a href="#" className="nav-link" onClick={() => setCurrentPage('events')}>Events</a>
                     <a href="#" className="nav-link" onClick={() => setCurrentPage('about')}>About</a>
+                    <a href="#" className="nav-link" onClick={() => setCurrentPage('registration')}>Register</a>
                 </nav>
             </div>
             <div className="header-right">

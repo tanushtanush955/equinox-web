@@ -17,7 +17,16 @@ const IndividualRegistration = ({ theme }) => {
 
       <div className="main-content-inner pt-20 flex justify-center items-start min-h-screen">
         <div className="w-full max-w-4xl">
-          
+          <div className="flex items-center registration-card">
+            <label className='entry-label'>
+             Team Name
+            </label>
+            <input className='input-field'
+            type="text"
+            name="team_name"
+            placeholder="Enter Team Name">
+            </input>
+          </div>
           <div>
             {entryBoxes.map((boxId) => (
               <ParticipantEntry key={boxId} participantNumber={boxId + 1} theme={theme} />

@@ -16,7 +16,7 @@ const EventItem = ({ event, showMessage, theme }) => {
         <button
           className="view-more-button"
           onClick={() =>
-            showMessage(`Viewing more details for: ${event.title}!`)
+            showMessage('event_details')
           }
           style={{
             borderColor: viewMoreButtonColor,
