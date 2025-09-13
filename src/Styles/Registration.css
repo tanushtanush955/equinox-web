@@ -73,3 +73,103 @@
 .register-button.institution:hover {
     background-color: #eab308; /* darker gold */
 }
+
+/* Add the following to your existing Registration.css file */
+
+.registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.registration-buttons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.register-button {
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* New style for the panel background */
+.registration-card {
+    background-color: #111b3526; /* Dark, slightly bluish-gray background */
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    background-color : #00000000;
+    color: #e5e7eb;
+    border-color: #00000000;
+    border-radius: 5rem;
+    min-height: 2rem;
+    min-width: 20rem;
+    outline-color: silver;
+    outline-width: 1rem;
+    padding-left: 2rem;
+}
+
+/* Focus state */
+.input-field:focus {
+  background-color: transparent;
+  color: #e5e7eb;
+  outline: 1px solid silver; /* controlled outline */
+}
+
+/* Chrome/Edge/Safari autofill */
+.input-field:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #e5e7eb !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+/* Firefox autofill */
+.input-field:-moz-autofill {
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -moz-text-fill-color: #e5e7eb;
+}
+
+.input-container {
+    padding-bottom: 1rem;
+}
+
+.entry-label {
+    margin-right: 1rem;
+}
+
+.header-text {
+    font-size: 4rem;
+}
+
+.submit-button {
+    background-color : #00000000;
+    color: #e5e7eb;
+    outline-style: solid;
+    border-radius: 5rem;
+    min-height: 2rem;
+    min-width: 20rem;
+    outline-color: silver;
+    outline-width: 2px;
+    text-align: center;
+}
+
+.submit-button:hover {
+    background-color : #00000000;
+    color: gold;
+    outline-style: solid;
+    border-radius: 5rem;
+    min-height: 2rem;
+    min-width: 20rem;
+    outline-color: gold;
+    outline-width: 2px;
+}

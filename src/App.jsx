@@ -7,6 +7,7 @@ import About from './Comonents/About';
 import Help from './Comonents/Help';
 import Contact from './Comonents/Contact';
 import Registration from './Comonents/Registration';
+import IndividualRegistration from './Comonents/IndividualRegistration';
 
 import "./Styles/Global.css";
 import "./Styles/Themes.css";
@@ -42,6 +43,8 @@ const App = () => {
                 return <About />;
             case 'contact':
                 return <Contact />;
+            case 'individual_registration':
+                return <IndividualRegistration theme={theme} />;
             default:
                 return null;
         }

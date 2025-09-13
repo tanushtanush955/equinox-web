@@ -2,8 +2,9 @@ import "../Styles/Registration.css";
 
 const Registration = ({ showMessage, setCurrentPage, theme }) => {
   const handleRegister = (type) => {
-    showMessage(`You chose to register as a/an ${type}.`);
-    setCurrentPage("events");
+    if (type === "Individual"){
+      setCurrentPage('individual_registration');
+    }
   };
 
   // Decide classes based on theme
