@@ -5,3 +5,31 @@
 	border-radius: 5rem;
 	padding: 50px;
 }
+
+.back-button-panel {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+
+.back-button {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color: #04315f;
+	color: #fffbfa;
+	outline-style: none;
+	border: none;
+	padding: 1.5rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	border-radius: 1rem;
+}
+.back-button:hover {
+	background-color: #91ABCE;
+	color: #000;
+}
+.back-button:active {
+	background-color: #3c4367;
+	color: #000;
+}	

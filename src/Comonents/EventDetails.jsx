@@ -1,6 +1,6 @@
 import React from 'react';
 import "../Styles/EventDetails.css"
-const EventDetails = ({ eventData }) => {
+const EventDetails = ({ eventData, onclick }) => {
   const { 
     eventName, 
     description, 
@@ -32,12 +32,20 @@ const EventDetails = ({ eventData }) => {
       <p><strong>Fees:</strong> {fees || 'TBD'}</p>
       <p><strong>Number of Teams:</strong> {numOfTeams || 'TBD'}</p>
       <p><strong>Number of Participants:</strong> {numOfParticipants || 'TBD'}</p>
+      <div className='back-button-panel'>
+        <button className='back-button'
+        onClick = {
+          ()=>onclick('events')
+        }>
+          Back
+        </button>
+      </div>
     </div>
 	</div>
   );
 };
 
-const EventsDataPanel =  () => {
+const EventsDataPanel =  ({onclick}) => {
 	const eventData = {
 		eventName: 'Tech Showdown 2025',
 		description: 'An exciting technology competition featuring coding challenges, hackathons, and innovation showcases. Open to all tech enthusiasts!',
@@ -58,7 +66,7 @@ const EventsDataPanel =  () => {
   return (
     <div>
       <div>
-        <EventDetails eventData={eventData} />
+        <EventDetails eventData={eventData} onclick={onclick}/>
       </div>
     </div>
   );

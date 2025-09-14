@@ -46,7 +46,7 @@ const App = () => {
             case 'individual_registration':
                 return <IndividualRegistration theme={theme} />;
             case 'event_details':
-                return <EventsDataPanel />;
+                return <EventsDataPanel onclick={setCurrentPage} />;
             default:
                 return null;
         }
