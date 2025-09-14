@@ -98,7 +98,7 @@ const Events = ({ showMessage, setCurrentPage, theme }) => {
         <p className="description-text">Check out our upcoming events below:</p>
 
         {/* Event list now handles rendering */}
-        <EventList events={eventsData} showMessage={showMessage} theme={theme} />
+        <EventList events={eventsData} showMessage={setCurrentPage} theme={theme} />
       </div>
 
       <div className="sticky-bar">

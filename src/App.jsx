@@ -8,7 +8,7 @@ import Help from './Comonents/Help';
 import Contact from './Comonents/Contact';
 import Registration from './Comonents/Registration';
 import IndividualRegistration from './Comonents/IndividualRegistration';
-
+import EventsDataPanel from './Comonents/EventDetails';
 import "./Styles/Global.css";
 import "./Styles/Themes.css";
 
@@ -45,6 +45,8 @@ const App = () => {
                 return <Contact />;
             case 'individual_registration':
                 return <IndividualRegistration theme={theme} />;
+            case 'event_details':
+                return <EventsDataPanel onclick={setCurrentPage} />;
             default:
                 return null;
         }

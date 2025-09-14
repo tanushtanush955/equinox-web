@@ -21,7 +21,7 @@
 }
 
 .explore-button:hover {
-    background-color: #facc15;
-    color: #000;
+    background-color: #a19565;
+    color: black;
     box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
 }
