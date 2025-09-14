@@ -1,29 +1,10 @@
-/* -----------------------------------------
-   Basic page/nav helpers (optional)
-   The wrapper will sit below your top nav if you place it after the nav.
-   You can set the nav height via --top-nav-height if you want.
-   ----------------------------------------- */
 :root {
-  --top-nav-height: 60px; /* change once if you use this helper */
+  --sidebar-height: 100vh;
 }
 
-/* Example sticky top nav if you need it */
-.top-nav {
-  position: sticky;
-  top: 0;
-  height: var(--top-nav-height);
-  background: #111827;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  z-index: 2000;
-}
 
-/* -----------------------------------------
-   Wrapper: no flex, purely relative positioning.
-   Place this element below your top-nav in DOM.
-   ----------------------------------------- */
+
+
 .sidebar-wrapper {
   position: relative;          /* required for absolute children */
   width: 100%;
@@ -44,10 +25,10 @@
   padding: 1rem;
   box-sizing: border-box;
   position: relative;
-  overflow: visible; /* ensure children aren't clipped */
+  height: var(--sidebar-height); /* full height */
+  overflow: visible;
   z-index: 5;
 }
-
 .primary-list {
   list-style: none;
   padding: 0;
@@ -66,9 +47,9 @@
 .secondary-sidebar {
   position: absolute;
   top: 0;
-  right: 0; /* slides in over primary */
+  right: 0;
   width: 220px;
-  height: 100%;
+  height: var(--sidebar-height); /* full height */
   background-color: #0f172a;
   color: #f8fafc;
   border-radius: 1rem 0 0 1rem;
