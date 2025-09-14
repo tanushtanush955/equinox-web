@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from "react"
 import "../Styles/EventDetails.css"
+import SideNav from './SideNav';
+
 const EventDetails = ({ eventData, onclick }) => {
   const { 
     eventName, 
@@ -63,11 +65,36 @@ const EventsDataPanel =  ({onclick}) => {
 		numOfParticipants: 75
 	};
 
+  const menu = [
+    {
+      key: "home",
+      label: "Home",
+      children: ["Dashboard", "Reports", "Analytics"],
+    },
+    {
+      key: "profile",
+      label: "Profile",
+      children: ["My Account", "Friends", "Messages"],
+    },
+    {
+      key: "settings",
+      label: "Settings",
+      children: ["General", "Privacy", "Notifications"],
+    },
+  ];
+
+
   return (
     <div>
-      <div>
+      <div className="events-container">
         <EventDetails eventData={eventData} onclick={onclick}/>
+        <SideNav menu={menu} />
+      
       </div>
+      <div>
+        
+      </div>
+      
     </div>
   );
 };

@@ -1,0 +1,148 @@
+/* -----------------------------------------
+   Basic page/nav helpers (optional)
+   The wrapper will sit below your top nav if you place it after the nav.
+   You can set the nav height via --top-nav-height if you want.
+   ----------------------------------------- */
+:root {
+  --top-nav-height: 60px; /* change once if you use this helper */
+}
+
+/* Example sticky top nav if you need it */
+.top-nav {
+  position: sticky;
+  top: 0;
+  height: var(--top-nav-height);
+  background: #111827;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 2000;
+}
+
+/* -----------------------------------------
+   Wrapper: no flex, purely relative positioning.
+   Place this element below your top-nav in DOM.
+   ----------------------------------------- */
+.sidebar-wrapper {
+  position: relative;          /* required for absolute children */
+  width: 100%;
+  height: calc(100vh - var(--top-nav-height)); /* auto confine below top nav */
+  overflow: hidden;           /* prevents peeking before animation */
+  box-sizing: border-box;
+  background: #f8fafc;        /* demo bg, remove or change */
+}
+
+/* -----------------------------------------
+   Primary sidebar (anchored to the right of wrapper)
+   ----------------------------------------- */
+.primary-sidebar {
+  width: 220px;
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-radius: 1rem 0 0 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: visible; /* ensure children aren't clipped */
+  z-index: 5;
+}
+
+.primary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.sidebar-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* -----------------------------------------
+   Secondary sidebar (absolute, same right:0)
+   slides in from the right - overlays primary.
+   ----------------------------------------- */
+.secondary-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0; /* slides in over primary */
+  width: 220px;
+  height: 100%;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-radius: 1rem 0 0 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+}
+
+/* bring secondary into view */
+.secondary-sidebar.open {
+  transform: translateX(0);
+}
+
+/* small top area (back + title) */
+.secondary-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* -----------------------------------------
+   Buttons (shared)
+   ----------------------------------------- */
+.sidebar-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.14s, color 0.14s;
+}
+
+.sidebar-btn:hover {
+  background: rgba(255,255,255,0.06);
+  color: #facc15;
+}
+
+.secondary-item-btn {
+  padding-left: 0.85rem; /* visually indent sub-options */
+  font-size: 0.95rem;
+}
+
+/* Back button style */
+.back-btn {
+  background: none;
+  border: none;
+  color: #facc15;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+}
+
+/* list resets */
+.secondary-list,
+.primary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-list li,
+.secondary-list li {
+  margin-bottom: 0.25rem;
+}

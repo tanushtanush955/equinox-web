@@ -32,4 +32,42 @@
 .back-button:active {
 	background-color: #3c4367;
 	color: #000;
-}	
+}
+
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Event content */
+.events-container > :first-child {
+  flex: 1;
+  margin-right: 1rem; /* keep gap only on left side of sidebar */
+}
+
+/* Event panel inline */
+.events-container > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Optional: event details takes more space */
+.events-container > :first-child {
+  width: 70%;   /* adjust as needed */
+}
+
+/* Sidebar narrower */
+.events-container > :last-child {
+  width: 220px;
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
